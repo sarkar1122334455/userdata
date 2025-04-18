@@ -4,65 +4,62 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
+import ServicesPage from './components/ServicePage';
+import ContactPage from './components/ContactPage';
+import { motion } from "motion/react"
 
 const Navbar = () => {
-  // State to store the current page component
   const [activePage, setActivePage] = useState('home');
 
-  // Function to handle active page change
-  const handlePageChange = (page:any) => {
+  const handlePageChange = (page: string) => {
     setActivePage(page);
   };
 
   return (
     <>
-      {/* Navbar */}
       <nav className="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 p-4 shadow-xl sticky top-0 z-50">
         <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
-          {/* Logo */}
           <div className="text-white text-3xl font-extrabold tracking-wide drop-shadow-lg hover:scale-105 transition duration-300">
-            <Link href="/">MyApp</Link>
+            <button onClick={() => handlePageChange('home')}>MyApp</button>
           </div>
 
-          {/* Nav Links */}
           <ul className="hidden md:flex space-x-8 text-lg font-medium">
             <li>
-              <Link
-                href="/"
-                className="text-white hover:text-yellow-100 transition duration-200 hover:underline underline-offset-4"
+              <motion.button
                 onClick={() => handlePageChange('home')}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-white hover:text-yellow-100 transition duration-200 hover:underline underline-offset-4"
               >
                 Home
-              </Link>
+              </motion.button>
             </li>
             <li>
-              <Link
-                href="/"
-                className="text-white hover:text-yellow-100 transition duration-200 hover:underline underline-offset-4"
+              <button
                 onClick={() => handlePageChange('about')}
+                className="text-white hover:text-yellow-100 transition duration-200 hover:underline underline-offset-4"
               >
                 About
-              </Link>
+              </button>
             </li>
             <li>
-              <Link
-                href="/services"
+              <button
+                onClick={() => handlePageChange('services')}
                 className="text-white hover:text-yellow-100 transition duration-200 hover:underline underline-offset-4"
               >
                 Services
-              </Link>
+              </button>
             </li>
             <li>
-              <Link
-                href="/contact"
+              <button
+                onClick={() => handlePageChange('contact')}
                 className="text-white hover:text-yellow-100 transition duration-200 hover:underline underline-offset-4"
               >
                 Contact
-              </Link>
+              </button>
             </li>
           </ul>
 
-          {/* Profile */}
           <div className="flex items-center gap-3">
             <img
               src="https://i.pravatar.cc/100"
@@ -81,9 +78,10 @@ const Navbar = () => {
       {/* Main Section */}
       <section className="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen flex items-center justify-center p-6">
         <div className="max-w-4xl w-full">
-          {/* Conditionally Render HomePage or AboutPage based on active link */}
           {activePage === 'home' && <HomePage />}
           {activePage === 'about' && <AboutPage />}
+          {activePage === 'services' && <ServicesPage />}
+          {activePage === 'contact' && <ContactPage />}
         </div>
       </section>
     </>
