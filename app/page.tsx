@@ -6,7 +6,6 @@ import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
 import ServicesPage from './components/ServicePage';
 import ContactPage from './components/ContactPage';
-import { motion } from "motion/react"
 
 const Navbar = () => {
   const [activePage, setActivePage] = useState('home');
@@ -17,7 +16,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 p-4 shadow-xl sticky top-0 z-50">
+      <nav className="bg-gradient-to-r from-blue-800 via-aqua-500 to-cyan-500 p-4 shadow-xl sticky top-0 z-50">
         <div className="container mx-auto flex justify-between items-center px-4 md:px-8">
           <div className="text-white text-3xl font-extrabold tracking-wide drop-shadow-lg hover:scale-105 transition duration-300">
             <button onClick={() => handlePageChange('home')}>MyApp</button>
@@ -25,14 +24,12 @@ const Navbar = () => {
 
           <ul className="hidden md:flex space-x-8 text-lg font-medium">
             <li>
-              <motion.button
+              <button
                 onClick={() => handlePageChange('home')}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
                 className="text-white hover:text-yellow-100 transition duration-200 hover:underline underline-offset-4"
               >
                 Home
-              </motion.button>
+              </button>
             </li>
             <li>
               <button
